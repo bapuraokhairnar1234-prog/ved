@@ -1,130 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kaushalya Desi Eggs — Future Design</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
-      color: #fff;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-      letter-spacing: 2px;
-    }
-
-    .egg {
-      width: 120px;
-      height: 160px;
-      background: radial-gradient(circle at 50% 40%, #f8f8f8, #ddd);
-      border-radius: 50% 50% 45% 45%;
-      position: relative;
-      box-shadow: 0 0 30px rgba(0,255,255,0.2), inset 0 0 20px rgba(255,255,255,0.3);
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .egg:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px #0ff;
-    }
-
-    .crack {
-      position: absolute;
-      width: 4px;
-      height: 0;
-      background: #111;
-      left: 50%;
-      top: 30%;
-      transform: translateX(-50%);
-      transition: height 0.3s;
-      opacity: 0;
-    }
-
-    .egg.burst {
-      background: radial-gradient(circle, #0ff, #004);
-      animation: burst 0.5s ease-out forwards;
-    }
-
-    .egg.burst .crack {
-      height: 100px;
-      opacity: 1;
-      background: #0ff;
-      box-shadow: 0 0 10px #0ff;
-    }
-
-    @keyframes burst {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(1.4); opacity: 0; }
-    }
-
-    .light {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #0ff;
-      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
-      opacity: 0;
-      animation: none;
-    }
-
-    .light.show {
-      animation: flash 0.5s ease-out;
-    }
-
-    @keyframes flash {
-      0% { opacity: 0; transform: scale(1); }
-      50% { opacity: 1; transform: scale(5); }
-      100% { opacity: 0; transform: scale(10); }
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 1.5rem; text-align: center; }
-      .egg { width: 100px; height: 130px; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaushalya Gavran Eggs — Future of Desi Taste</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Kaushalya Desi Eggs</h1>
-  <div class="egg" id="egg">
-    <div class="crack"></div>
+  <div class="nav">
+    <h2>Kaushalya <span>Desi Eggs</span></h2>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </div>
-  <div class="light" id="light"></div>
 
-  <script>
-    const egg = document.getElementById('egg');
-    const light = document.getElementById('light');
+  <section class="hero">
+    <div class="content">
+      <h1>Pure. Desi. <span>Future Ready.</span></h1>
+      <p>Experience the fusion of tradition and technology — Organic Gavran Eggs from Kaushalya Desi Farms.</p>
+      <a href="contact.html" class="btn">Buy Now</a>
+    </div>
 
-    egg.addEventListener('click', () => {
-      egg.classList.add('burst');
-      light.classList.add('show');
-      setTimeout(() => {
-        egg.classList.remove('burst');
-        light.classList.remove('show');
-      }, 700);
-    });
-  </script>
+    <div class="egg-container">
+      <div class="egg" id="egg1"></div>
+      <div class="egg" id="egg2"></div>
+      <div class="egg" id="egg3"></div>
+      <div class="egg" id="egg4"></div>
+      <div class="egg" id="egg5"></div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
