@@ -1,37 +1,40 @@
-// Background sound
-const audio = new Audio("https://cdn.pixabay.com/download/audio/2021/08/08/audio_1a8457a3b1.mp3?filename=futuristic-ambience-6290.mp3");
-audio.loop = true;
-audio.volume = 0.3;
-audio.play().catch(() => {
-  console.log("Autoplay blocked; will start on user interaction.");
-  document.body.addEventListener('click', () => audio.play(), { once: true });
+// Select all eggs
+const eggs = document.querySelectorAll('.egg');
+
+// Burst sound
+const burstSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_140c8b9e94.mp3?filename=pop-94319.mp3');
+burstSound.volume = 0.3;
+
+// Egg click burst animation
+eggs.forEach(egg => {
+  egg.addEventListener('click', () => {
+    if (!egg.classList.contains('burst')) {
+      egg.classList.add('burst');
+      burstSound.currentTime = 0;
+      burstSound.play();
+
+      setTimeout(() => {
+        egg.classList.remove('burst');
+      }, 600);
+    }
+  });
 });
 
-// Egg burst effect
-function addBurstEffect(egg) {
-  egg.classList.add('burst');
-  const pop = new Audio("https://actions.google.com/sounds/v1/cartoon/pop.ogg");
-  pop.play();
+// Background hum (futuristic vibe)
+const bgHum = new Audio('https://cdn.pixabay.com/download/audio/2021/08/04/audio_2b4b0ab54a.mp3?filename=futuristic-soundscape-6087.mp3');
+bgHum.loop = true;
+bgHum.volume = 0.1;
 
-  for (let i = 0; i < 15; i++) {
-    const particle = document.createElement('div');
-    particle.style.position = 'absolute';
-    particle.style.width = '6px';
-    particle.style.height = '6px';
-    particle.style.background = '#00eaff';
-    particle.style.borderRadius = '50%';
-    particle.style.left = egg.offsetLeft + egg.offsetWidth / 2 + 'px';
-    particle.style.top = egg.offsetTop + egg.offsetHeight / 2 + 'px';
-    document.body.appendChild(particle);
+// Try auto-play sound after user scrolls/taps
+window.addEventListener('scroll', () => {
+  if (bgHum.paused) bgHum.play().catch(() => {});
+});
 
-    const x = (Math.random() - 0.5) * 300;
-    const y = (Math.random() - 0.5) * 300;
-    particle.animate([
-      { transform: 'translate(0,0)', opacity: 1 },
-      { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
-    ], { duration: 700, easing: 'ease-out' });
-    setTimeout(() => particle.remove(), 700);
-  }
-
-  setTimeout(() => egg.classList.remove('burst'), 800);
-}
+// Move eggs slightly on scroll
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  eggs.forEach((egg, i) => {
+    const move = Math.sin(scrollY * 0.01 + i) * 20;
+    egg.style.transform = `translateX(${move}px) rotateY(${scrollY % 360}deg)`;
+  });
+});
