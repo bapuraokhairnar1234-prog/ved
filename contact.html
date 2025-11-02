@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Kaushalya Desi Eggs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="nav">
+    <h2><span>Kaushalya</span> Desi Eggs</h2>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" style="color:#00ffff;">Contact</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="content">
+      <h1>Contact Us</h1>
+      <p>We’d love to hear from you. Whether you want to place a bulk order, partner with us, or just know more about our pure Gavran Desi eggs — drop us a message below!</p>
+    </div>
+
+    <div class="egg-container">
+      <div class="egg"></div>
+      <div class="egg"></div>
+      <div class="egg"></div>
+    </div>
+
+    <form class="contact-form" onsubmit="sendMessage(event)">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <div class="info">
+      <p>📞 Call or WhatsApp: <strong>+91 8767405835</strong></p>
+      <p>📍 Nashik, Maharashtra</p>
+      <p>🐔 Follow us on social media — coming soon!</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    function sendMessage(e) {
+      e.preventDefault();
+      alert('Thank you for reaching out! We’ll contact you soon 🥚✨');
+    }
+  </script>
+</body>
+</html>
